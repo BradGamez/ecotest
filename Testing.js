@@ -68,5 +68,19 @@ bot.on('message', async message => {
   }
 }); 
 
+bot.on('message', message => {
+  var guild = message.guild;
+  var author = message.author;
+   
+  var args = message.content.split(' '); var g = " "; for(var i = 1; i < args.length; i++){ g = g+" "+args[i]; }
+  if (message.content.toLowerCase().startsWith(prefix + 'givemoney')) {
+      db.add("userBlance_${user.id}", g)
+      var embed = new Discord.RichEmbed();
+      if (message.author.bot) return;
+      embed.setColor('BLUE');
+      embed.setDescription(bal);
+    message.channel.send({embed});
+  }
+});
 
 bot.login(process.env.BOT_TOKEN)
