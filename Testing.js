@@ -71,6 +71,23 @@ bot.on('message', async message => {
 bot.on('message', async message => {
   var guild = message.guild;
   var author = message.author;
+  let bal = await db.fetch('userBalance_${message.author.id}');
+  if(bal === null) bal = 0;
+  if (message.content.toLowerCase().startsWith(prefix + 'resetbal')) { 
+      db.set(userBalance_${message.author.id}, 0)
+      var embed = new Discord.RichEmbed();
+      if (message.author.bot) return;
+      embed.setColor('BLUE');
+      embed.setDescription(bal);
+    message.channel.send({embed});
+
+
+  }
+}); 
+
+bot.on('message', async message => {
+  var guild = message.guild;
+  var author = message.author;
    let bal = await db.fetch('userBalance_${message.author.id}');
   if(bal === null) bal = 0;
     var user = message.mentions.users.first();
