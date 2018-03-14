@@ -50,7 +50,7 @@ bot.on('message', message => {
       embed.setDescription("Preview : " + g + "\n\nAnswer : " + math.eval(g));
     message.channel.send({embed});
   }catch(error){
-  console.error(message.channel.send(error))
+  message.channel.send(error)
   }
 }
 
