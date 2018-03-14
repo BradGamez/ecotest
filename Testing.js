@@ -71,7 +71,8 @@ bot.on('message', async message => {
 bot.on('message', message => {
   var guild = message.guild;
   var author = message.author;
-   
+   let bal = await db.fetch('userBalance_${message.author.id}');
+  if(bal === null) bal = 0;
   var args = message.content.split(' '); var g = " "; for(var i = 1; i < args.length; i++){ g = g+" "+args[i]; }
   if (message.content.toLowerCase().startsWith(prefix + 'givemoney')) {
       db.add("userBlance_${user.id}", g)
