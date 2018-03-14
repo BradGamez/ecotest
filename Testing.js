@@ -49,6 +49,8 @@ bot.on('message', message => {
       }catch(e){
         message.channel.send(e)
         } 
+      
+    if(e.length === 0) return;
     if (message.author.bot) return;
     embed.setColor('BLUE');
     embed.setDescription("Preview : " + g + "\n\nAnswer : " + a);
