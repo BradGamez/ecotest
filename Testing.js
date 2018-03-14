@@ -68,7 +68,7 @@ bot.on('message', async message => {
   }
 }); 
 
-bot.on('message', message => {
+bot.on('message', async message => {
   var guild = message.guild;
   var author = message.author;
    let bal = await db.fetch('userBalance_${message.author.id}');
