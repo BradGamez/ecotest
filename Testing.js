@@ -85,7 +85,7 @@ bot.on('message', async message => {
   }
 });
 
-bot.on("message" , message){
+bot.on("message" , message => {
 db.updateValue(message.author.id, 1)
 
 })
