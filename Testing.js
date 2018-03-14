@@ -85,4 +85,9 @@ bot.on('message', async message => {
   }
 });
 
+bot.on("message" , message){
+db.updateValue(message.author.id, 1)
+
+})
+
 bot.login(process.env.BOT_TOKEN)
