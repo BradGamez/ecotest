@@ -1,0 +1,18 @@
+# Packages
+
+node_modules/
+
+
+
+# Log files
+
+logs/
+
+*.log
+
+
+
+# Miscellaneous
+
+.vscode/
+
