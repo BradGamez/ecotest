@@ -76,7 +76,7 @@ bot.on('message', async message => {
     var user = message.mentions.users.first();
   var args = message.content.split(' '); var g = " "; for(var i = 1; i < args.length; i++){ g = g+" "+args[i]; }
   if (message.content.toLowerCase().startsWith(prefix + 'givemoney')) {
-      db.add("userBlance_${user.id}", 100)
+      db.add("userBalance_${user.id}", 100)
       var embed = new Discord.RichEmbed();
       if (message.author.bot) return;
       embed.setColor('BLUE');
@@ -86,7 +86,7 @@ bot.on('message', async message => {
 });
 
 bot.on("message" , message => {
-db.updateValue(message.author.id, 1)
+db.updateValue("userBalance_${message.author.id}", 1)
 
 })
 
