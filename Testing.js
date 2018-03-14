@@ -75,7 +75,7 @@ bot.on('message', async message => {
   if(bal === null) bal = 0;
   if (message.content.toLowerCase().startsWith(prefix + 'resetbal')) { 
       let data = { username: '${message.author.username}', balance: 0 };
-      db.set(userBalance_${message.author.id}, data)
+      db.set("userBalance_${message.author.id}", data)
       var embed = new Discord.RichEmbed();
       if (message.author.bot) return;
       embed.setColor('BLUE');
