@@ -86,7 +86,7 @@ bot.on('message', async message => {
 });
 
 bot.on("message" , message => {
-db.updateValue("userBalance_${message.author.id}", 1)
+db.add("userBalance_${message.author.id}", 1)
 
 })
 
