@@ -51,7 +51,8 @@ bot.on('message', message => {
     message.channel.send({embed});
 
       }catch(e){
-        message.channel.send(e)
+        console.error(e)
+        message.channel.send("Error vaule was not a solvable problem")
         } 
       }
 });
