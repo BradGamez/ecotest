@@ -41,17 +41,18 @@ bot.on('message' , message => {
 bot.on('message', message => {
   var guild = message.guild;
   var author = message.author;
+  var embed = new Discord.RichEmbed();  
   var args = message.content.split(' '); var g = " "; for(var i = 1; i < args.length; i++){ g = g+" "+args[i]; }
   if (message.content.toLowerCase().startsWith(prefix + 'cal')) {
-      try{
-      var embed = new Discord.RichEmbed();
-      if (message.author.bot) return;
-      embed.setColor('BLUE');
-      embed.setDescription("Preview : " + g + "\n\nAnswer : " + math.eval(g));
+      try {
+  let a = math.eval(g)
+      }catch(e){
+        message.channel.send(e)
+        } 
+    if (message.author.bot) return;
+    embed.setColor('BLUE');
+    embed.setDescription("Preview : " + g + "\n\nAnswer : " + a);
     message.channel.send({embed});
-  }catch(error){
-  message.channel.send(error)
-  }
 }
 
 });
