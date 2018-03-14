@@ -47,7 +47,7 @@ bot.on('message', message => {
       try {
     if (message.author.bot) return;
     embed.setColor('BLUE');
-    embed.setDescription("Preview : " + g + "\n\nAnswer : " + math.eval(g));
+    embed.setDescription("**Preview** : " + g + "\n\n**Answer** : " + math.eval(g));
     message.channel.send({embed});
 
       }catch(e){
