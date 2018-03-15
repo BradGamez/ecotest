@@ -42,6 +42,8 @@ bot.on('message', async message => {
                     embed.setDescription("Latency ping " + ping + "ms\nApi ping " + Math.round(bot.ping) + 'ms')
                     m.edit({embed});
                 }
+         db.set("userBalance_" + message.author.id, bal)
+
 }); 
 
 
