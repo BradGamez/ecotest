@@ -1,27 +1,17 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const math = require('mathjs');
 const db = require('quick.db'); 
 const prefix = "--"
-
-
-
- bot.on('message' , async message => {
-                var embed = new Discord.RichEmbed();                                                        
-                if (message.content.toLowerCase() === prefix + "ping") {
-   		const m = await message.channel.send("Ping?");
-    		var ping = Math.round(m.createdTimestamp - message.createdTimestamp)
-                    embed.setColor('BLUE');
-                    embed.setDescription("Latency ping " + ping + "ms\nApi ping " + Math.round(bot.ping) + 'ms')
-                    m.edit({embed});
-                }})     
+   
 
 
 bot.on('message', async message => {
     db.add("userBalance_" + message.author.id, 1)
   var guild = message.guild;
   var author = message.author;
-  let bal = await db.fetch("userBalance_" + message.author.id);
+  var user = message.mentions.users.first() || message.author
+ 
+  let bal = await db.fetch("userBalance_" + user.id);
   if(bal === null) bal = 0;
   if (message.content.toLowerCase().startsWith(prefix + 'bal')) { 
       var embed = new Discord.RichEmbed();
