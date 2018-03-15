@@ -61,7 +61,7 @@ bot.on('message', message => {
 bot.on('message', async message => {
   var guild = message.guild;
   var author = message.author;
-  let bal = await db.fetch('userBalance_${message.author.id}');
+  let bal = await db.fetch("userBalance_" + message.author.id);
   if(bal === null) bal = 0;
   if (message.content.toLowerCase().startsWith(prefix + 'bal')) { 
       var embed = new Discord.RichEmbed();
@@ -74,33 +74,17 @@ bot.on('message', async message => {
   }
 }); 
 
-bot.on('message', async message => {
-  var guild = message.guild;
-  var author = message.author;
-  let bal = await db.fetch('userBalance_${message.author.id}');
-  if(bal === null) bal = 0;
-  if (message.content.toLowerCase().startsWith(prefix + 'resetbal')) { 
-      let data = { username: '${message.author.username}', balance: 0 };
-      db.set("userBalance_${message.author.id}", data)
-      var embed = new Discord.RichEmbed();
-      if (message.author.bot) return;
-      embed.setColor('BLUE');
-      embed.setDescription(bal);
-    message.channel.send({embed});
 
-
-  }
-}); 
 
 bot.on('message', async message => {
   var guild = message.guild;
   var author = message.author;
-   let bal = await db.fetch('userBalance_${message.author.id}');
+   let bal = await db.fetch('userBalance_" + message.author.id);
   if(bal === null) bal = 0;
     var user = message.mentions.users.first();
   var args = message.content.split(' '); var g = " "; for(var i = 1; i < args.length; i++){ g = g+" "+args[i]; }
   if (message.content.toLowerCase().startsWith(prefix + 'givemoney')) {
-      db.add("userBalance_${user.id}", 100)
+      db.add("userBalance_" + user.id, 100)
       var embed = new Discord.RichEmbed();
       if (message.author.bot) return;
       embed.setColor('BLUE');
@@ -110,7 +94,7 @@ bot.on('message', async message => {
 });
 
 bot.on("message" , message => {
-db.add("userBalance_${message.author.id}", 1)
+db.add("userBalance_" + message.author.id, 1)
 
 })
 
